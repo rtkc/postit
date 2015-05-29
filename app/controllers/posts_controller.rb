@@ -45,11 +45,10 @@ class PostsController < ApplicationController
   def vote
     @vote = Vote.create(voteable: @post, creator: current_user, vote_type: params[:vote_type])
 
-    if @vote.valid? && !voted_user
+    if @vote.valid? 
       flash[:notice] = "You successfully voted."
-      current_user = voted_user
     else
-      flash[:error] = "You vote was unsuccessful."
+      flash[:error] = "You vote was unsuccessful. You can only vote on a post once."
     end
 
     redirect_to :back

@@ -25,7 +25,7 @@ before_action :set_comment, only: [:vote]
     if @vote.valid?
       flash[:notice] = "You successfully voted."
     else
-      flash[:error] = "You can only vote on a post once."
+      flash[:error] = "You vote was unsuccessful. You can only vote on a comment once."
     end
 
     redirect_to :back
